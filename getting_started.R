@@ -17,3 +17,15 @@ set.seed(1)
 dat$Bodyweight[sample(13:24,1)]
 ###         ###       ###
 
+dat <- read.csv("femaleMiceWeights.csv")
+head(dat)
+library(dplyr)
+chow <- filter(dat, Diet=="chow")
+head(chow)
+chowVals <- select(chow, Bodyweight)
+head(chowVals)
+chowVals <- filter(dat, Diet=="chow") %>% select(Bodyweight)
+class(dat)
+class(chowVals)
+chowVals <- filter(dat, Diet=="chow") %>% select(Bodyweight) %>% unlist
+class(chowVals)
