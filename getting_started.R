@@ -29,3 +29,28 @@ class(dat)
 class(chowVals)
 chowVals <- filter(dat, Diet=="chow") %>% select(Bodyweight) %>% unlist
 class(chowVals)
+
+### Exercises ### 
+"1."
+dat <- read.csv("msleep.csv")
+"2."
+nrow(filter(dat, order=="Primates"))
+"3."
+class(filter(dat, order=="Primates"))
+"4."
+class(filter(dat, order=="Primates") %>% select(sleep_total))
+"5."
+mean(filter(dat, order=="Primates") %>% select(sleep_total) %>% unlist)
+"6."
+?summarise
+dat %>% group_by(order) %>% summarise(mean = mean(sleep_total), n=n())
+### ### ### ### 
+
+x <- 1:5 
+n <- 1000
+x <- 1:n
+S <- sum(x)
+onethird <- function(n) sum( 3/10^c(1:n))
+1/3 - onethird(4)
+1/3 - onethird(10)
+1/3 - onethird(16)
