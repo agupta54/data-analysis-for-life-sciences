@@ -271,3 +271,103 @@ for (i in seq(along=Ns)){
   qqnorm(res[,i],main=Ns[i])
   qqline(res[,i],col=2)
 }
+
+### Exercises ### 
+dat <- read.csv("femaleMiceWeights.csv")
+"1."
+n <- 100
+x <- sample(1:6, n, replace = TRUE)
+mean(x==6)
+set.seed(1)
+avgd <- replicate(10000,mean(sample(1:6, n, replace = TRUE) == 6))
+p = 1/6
+z <- (avgd - p) / (sqrt(p*(1-p)/n))
+mean(abs(z) >= 2)
+"2."
+qqnorm(z)
+qqline(z)
+mypar(2,2)
+n <- 5
+x <- sample(1:6, n, replace = TRUE)
+set.seed(1)
+avgd <- replicate(10000,mean(sample(1:6, n, replace = TRUE) == 6))
+p = 0.5
+z <- (avgd - p) / (sqrt(p*(1-p)/n))
+qqnorm(z)
+qqline(z)
+n <- 30
+x <- sample(1:6, n, replace = TRUE)
+set.seed(1)
+avgd <- replicate(10000,mean(sample(1:6, n, replace = TRUE) == 6))
+p = 0.5
+z <- (avgd - p) / (sqrt(p*(1-p)/n))
+qqnorm(z)
+qqline(z)
+n <- 30
+x <- sample(1:6, n, replace = TRUE)
+set.seed(1)
+avgd <- replicate(10000,mean(sample(1:6, n, replace = TRUE) == 6))
+p = 0.01
+z <- (avgd - p) / (sqrt(p*(1-p)/n))
+qqnorm(z)
+qqline(z)
+n <- 100
+x <- sample(1:6, n, replace = TRUE)
+set.seed(1)
+avgd <- replicate(10000,mean(sample(1:6, n, replace = TRUE) == 6))
+p = 0.01
+z <- (avgd - p) / (sqrt(p*(1-p)/n))
+qqnorm(z)
+qqline(z)
+"3."
+X <- filter(dat, Diet=="chow") %>% select(Bodyweight) %>% unlist
+Y <- filter(dat, Diet=="hf") %>% select(Bodyweight) %>% unlist
+mean(X)
+"4. D"
+"5. Zero"
+"6."
+seX <- sd(X)/sqrt(length(X))
+"7."
+Z <- 5.21 / se
+(1-pnorm(Z)) + pnorm(-Z)
+"8."
+se <- sqrt((sd(Y)*sd(Y)/12) + (sd(X)*sd(X)/12))
+"9. 10. A"
+"11."
+z <- 5.21/se
+(1-pnorm(z)) 
+"12."
+qqnorm(X)
+qqnorm(Y)
+t.test(X,Y)
+"13. C"
+### ### ### ### 
+
+dat <- read.csv("femaleMiceWeights.csv")
+control <- filter(dat, Diet=="chow") %>% select(Bodyweight) %>% unlist
+treatment <- filter(dat, Diet=="hf") %>% select(Bodyweight) %>% unlist
+diff <- mean(treatment) - mean(control)
+print(diff)
+sd(control)/sqrt(length(control))
+se <- sqrt(
+  var(treatment)/length(treatment) + 
+    var(control)/length(control)
+)
+diff
+tstat <- diff/se
+righttail <- 1 - pnorm(abs(tstat))
+lefttail <- pnorm(-abs(tstat))
+pval <- lefttail + righttail
+print(pval)
+mypar(1,2)
+qqnorm(treatment)
+qqline(treatment,col=2)
+qqnorm(control)
+qqline(control,col=2)
+t.test(treatment, control)
+result <- t.test(treatment,control)
+result$p.value
+dat <- read.csv("mice_pheno.csv")
+control <- filter(dat, Diet=="chow") %>% select(Bodyweight)
+treatment <- filter(dat, Diet=="hf") %>% select(Bodyweight)
+t.test(treatment,control)
