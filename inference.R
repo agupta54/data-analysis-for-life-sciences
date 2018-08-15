@@ -227,3 +227,47 @@ x <- seq(0.0001, 0.9999, len=300)
 qt(x, df=3)
 qnorm(x)
 ### ### ### ###
+
+dat <- read.csv("mice_pheno.csv")
+head(dat)
+controlPopulation <- filter(dat, Sex=="F" & Diet == "chow") %>%
+  select(Bodyweight) %>% unlist
+hfPopulation <- filter(dat, Sex == "F" & Diet == "hf") %>% 
+  select(Bodyweight) %>% unlist 
+mu_hf <- mean(hfPopulation)
+mu_control <- mean(controlPopulation)
+print(mu_hf - mu_control)
+library(rafalib)
+sd_hf <- popsd(hfPopulation)
+sd_control <- popsd(controlPopulation)
+N <- 12
+hf <- sample(hfPopulation, 12)
+control <- sample(controlPopulation, 12)
+Ns <- c(3,12,25,50)
+B <- 10000 #number of simulations
+res <-  sapply(Ns,function(n) {
+  replicate(B,mean(sample(hfPopulation,n))-mean(sample(controlPopulation,n)))
+})
+mypar(2,2)
+for (i in seq(along=Ns)) {
+  titleavg <- signif(mean(res[,i]),3)
+  titlesd <- signif(popsd(res[,i]),3)
+  title <- paste0("N=",Ns[i]," Avg=",titleavg," SD=",titlesd)
+  qqnorm(res[,i],main=title)
+  qqline(res[,i],col=2)
+}
+Ns <- c(3,12,25,50)
+B <- 10000 
+computestat <- function(n){
+  y <- sample(hfPopulation,n)
+  x <- sample(controlPopulation,n)
+  (mean(y)-mean(x))/sqrt(var(y)/n+var(x)/n)
+}
+res <- sapply(Ns, function(n){
+  replicate(B,computestat(n))
+})
+mypar(2,2)
+for (i in seq(along=Ns)){
+  qqnorm(res[,i],main=Ns[i])
+  qqline(res[,i],col=2)
+}
