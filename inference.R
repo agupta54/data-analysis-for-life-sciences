@@ -541,3 +541,126 @@ res <- sapply(Ns, function(N){
   mean(rejects)
 })
 Ns[ which.min( abs( res - .8) ) ]
+### ### ### ### 
+dat <- read.csv("mice_pheno.csv")
+controlPopulation <- filter(dat,Sex == "F" & Diet=="chow") %>%
+  select(Bodyweight) %>% unlist
+ttestgenerator <- function(n) {
+  cases <- sample(controlPopulation,n)
+  controls <- sample(controlPopulation,n)
+  tstat <- (mean(cases) - mean(controls)) / 
+    sqrt( var(cases)/n + var(controls)/n )
+  return(tstat)
+}
+ttests <- replicate(1000, ttestgenerator(10))
+hist(ttests)
+qqnorm(ttests)
+abline(0,1)
+ttests <- replicate(1000, ttestgenerator(3))
+qqnorm(ttests)
+abline(0,1)
+ps <- (seq(0,999)+0.5)/1000
+qqplot(qt(ps,df=2*3-2),ttests,xlim=c(-6,6),ylim=c(-6,6))
+abline(0,1)
+qqnorm(controlPopulation)
+qqline(controlPopulation)
+controls <- rnorm(5000, mean=24, sd=3.5)
+ttestgenerator <- function(n,mean=24,sd=3.5) {
+  cases <- rnorm(n,mean,sd)
+  controls <- rnorm(n,mean,sd)
+  tstat <- (mean(cases)-mean(controls)) / 
+    sqrt( var(cases)/n + var(controls)/n )
+  return(tstat)
+}
+### Exercises ### 
+"1."
+set.seed(1)
+X <- rnorm(5)
+tstat <- sqrt(5)*mean(X)/sd(X)
+tstat
+"2."
+set.seed(1)
+B <- 1000
+ttestgenerator <- function(n) {
+  X <- rnorm(n)
+  tstat <- (sqrt(n)*mean(X))/sd(X) 
+  return(tstat)
+}
+ttests <- replicate(B, ttestgenerator(5))
+mean(ttests >= 2)
+"3."
+1-pt(2,df=4)
+library(rafalib)
+mypar(3,2)
+Ns<-seq(5,30,5)
+B <- 1000
+LIM <- c(-4.5,4.5)
+for(N in Ns){
+  ts <- replicate(B, {
+    X <- rnorm(N)
+    sqrt(N)*mean(X)/sd(X)
+  })
+  ps <- seq(1/(B+1),1-1/(B+1),len=B)
+  qqplot(qt(ps,df=N-1),ts,main=N,
+         xlab="Theoretical",ylab="Observed",
+         xlim=LIM, ylim=LIM)
+  abline(0,1)
+} 
+"4."
+Ns<-seq(5,30,5)
+B <- 1000
+mypar(3,2)
+LIM <- c(-4.5,4.5)
+for(N in Ns){
+  ts <- replicate(B,{
+    x <- rnorm(N)
+    y <- rnorm(N)
+    t.test(x,y, var.equal = TRUE)$stat
+  })
+  ps <- seq(1/(B+1),1-1/(B+1),len=B)
+  qqplot(qt(ps,df=2*N-2),ts,main=N,
+         xlab="Theoretical",ylab="Observed",
+         xlim=LIM, ylim=LIM)
+  abline(0,1)
+}  
+"5."
+set.seed(1)
+N <- 15
+B <- 10000
+tstats <- replicate(B,{
+  X <- sample(c(-1,1), N, replace=TRUE)
+  sqrt(N)*mean(X)/sd(X)
+})
+mypar(1,1)
+ps=seq(1/(B+1), 1-1/(B+1), len=B) 
+qqplot(qt(ps,N-1), tstats, xlim=range(tstats))
+abline(0,1)
+### ### ### ### 
+dat <- read.csv("femaleMiceWeights.csv")
+control <- filter(dat, Diet=="chow") %>% 
+  select(Bodyweight) %>% unlist
+treatment <- filter(dat, Diet == "hf") %>% 
+  select(Bodyweight) %>% unlist 
+obsdiff <- mean(treatment) - mean(control)
+N <- 12
+avgdiff <- replicate(1000, {
+  all <- sample(c(control,treatment))
+  newcontrols <- all[1:N]
+  newtreatments <- all[(N+1):(2*N)]
+  return(mean(newtreatments) - mean(newcontrols))
+})
+hist(avgdiff)
+abline(v=obsdiff, col="red", lwd=2)
+(sum(abs(avgdiff) > abs(obsdiff)) + 1) / (length(avgdiff) + 1)
+N <- 5
+control <- sample(control, N)
+treatment <- sample(treatment, N)
+obsdiff <- mean(treatment) - mean(control)
+avgdiff <- replicate(1000, {
+  all <- sample(c(control,treatment))
+  newcontrols <- all[1:N]
+  newtreatments <- all[(N+1):(2*N)]
+  return(mean(newtreatments) - mean(newcontrols))
+})
+hist(avgdiff)
+abline(v=obsdiff, col="red", lwd=2)
