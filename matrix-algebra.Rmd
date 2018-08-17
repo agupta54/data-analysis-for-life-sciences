@@ -1,0 +1,30 @@
+---
+title: "Matrix Algebra"
+output: html_notebook
+---
+# motivating Eamples 
+
+## Falling objects
+```{r}
+set.seed(1)
+g <- 9.8
+n <- 25
+tt <- seq(0,3.4,len=n)
+d <- 56.67 - 0.5*g*tt*2 + rnorm(n,sd=1)
+plot(tt,d,ylab="Distance in meters",xlab="Time in seconds")
+```
+By looking at the plot one can deduce that the position should follow a parabola. We can model by - 
+
+$$ Y_i = \beta_0 + \beta_1 x_i + \beta_2 x_{i}^{2} + \epsilon, i = 1......n $$
+
+## Father and son heights 
+```{r}
+library(UsingR)
+x = father.son$fheight
+y = father.son$sheight
+plot(x,y,xlab="Father's height", ylab="Son's height")
+```
+The son's height do seem to increase linearly with father's heights. In this case we chose a linear model - 
+
+$$ Y_i = \beta_0 + \beta_1 x_i + \epsilon, i = 1,......,N $$
+
