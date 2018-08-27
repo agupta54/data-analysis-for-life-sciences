@@ -1841,10 +1841,6 @@ lines(Beta2s,sapply(Beta2s,rss,Beta0=65,Beta1=0),col=2)</code></pre>
 <h2>Exercises</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShVc2luZ1IpXG5kYXRhKFwiZmF0aGVyLnNvblwiLHBhY2thZ2U9XCJVc2luZ1JcIilcbmBgYCJ9 -->
-<pre class="r"><code>library(UsingR)
-data(&quot;father.son&quot;,package=&quot;UsingR&quot;)</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBRdWVzdGlvbiAxIFxubWVhbihmYXRoZXIuc29uJHNoZWlnaHQpXG5gYGAifQ== -->
@@ -1856,17 +1852,127 @@ mean(father.son$sheight)</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBRdWVzdGlvbiAyIFxuXG5gYGAifQ== -->
-<pre class="r"><code># Question 2 
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBRdWVzdGlvbiAyIFxuXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # Question 2</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+</div>
+<div id="vectors-matrices-and-scalars" class="section level2">
+<h2>Vectors, Matrices and Scalars</h2>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShVc2luZ1IpXG55ID0gZmF0aGVyLnNvbiRmaGVpZ2h0XG5oZWFkKHkpXG5gYGAifQ== -->
+<pre class="r"><code>library(UsingR)
+y = father.son$fheight
+head(y)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDY1LjA0ODUxIDYzLjI1MDk0IDY0Ljk1NTMyIDY1Ljc1MjUwIDYxLjEzNzIzIDYzLjAyMjU0XG4ifQ== -->
+<pre><code>[1] 65.04851 63.25094 64.95532 65.75250 61.13723 63.02254</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubiA8LSAyNSBcbnR0IDwtIHNlcSgwLDMuNCxsZW49bilcblggPC0gY2JpbmQoWDE9dHQsWDI9dHReMilcbmhlYWQoWClcbmBgYCJ9 -->
+<pre class="r"><code>n &lt;- 25 
+tt &lt;- seq(0,3.4,len=n)
+X &lt;- cbind(X1=tt,X2=tt^2)
+head(X)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgWDEgICAgICAgICBYMlxuWzEsXSAwLjAwMDAwMDAgMC4wMDAwMDAwMFxuWzIsXSAwLjE0MTY2NjcgMC4wMjAwNjk0NFxuWzMsXSAwLjI4MzMzMzMgMC4wODAyNzc3OFxuWzQsXSAwLjQyNTAwMDAgMC4xODA2MjUwMFxuWzUsXSAwLjU2NjY2NjcgMC4zMjExMTExMVxuWzYsXSAwLjcwODMzMzMgMC41MDE3MzYxMVxuIn0= -->
+<pre><code>            X1         X2
+[1,] 0.0000000 0.00000000
+[2,] 0.1416667 0.02006944
+[3,] 0.2833333 0.08027778
+[4,] 0.4250000 0.18062500
+[5,] 0.5666667 0.32111111
+[6,] 0.7083333 0.50173611</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTiA8LTEwMCBcbnAgPC0gNVxuWCA8LSBtYXRyaXgoMTooTipwKSxOLHApXG5oZWFkKFgpXG5gYGAifQ== -->
+<pre class="r"><code>N &lt;-100 
+p &lt;- 5
+X &lt;- matrix(1:(N*p),N,p)
+head(X)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXSBbLDRdIFssNV1cblsxLF0gICAgMSAgMTAxICAyMDEgIDMwMSAgNDAxXG5bMixdICAgIDIgIDEwMiAgMjAyICAzMDIgIDQwMlxuWzMsXSAgICAzICAxMDMgIDIwMyAgMzAzICA0MDNcbls0LF0gICAgNCAgMTA0ICAyMDQgIDMwNCAgNDA0XG5bNSxdICAgIDUgIDEwNSAgMjA1ICAzMDUgIDQwNVxuWzYsXSAgICA2ICAxMDYgIDIwNiAgMzA2ICA0MDZcbiJ9 -->
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,]    1  101  201  301  401
+[2,]    2  102  202  302  402
+[3,]    3  103  203  303  403
+[4,]    4  104  204  304  404
+[5,]    5  105  205  305  405
+[6,]    6  106  206  306  406</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTiA8LSAxMDA7IHA8LSA1XG5YIDwtIG1hdHJpeCgxOihOKnApLE4scCxieXJvdz1UUlVFKVxuaGVhZChYKVxuYGBgIn0= -->
+<pre class="r"><code>N &lt;- 100; p&lt;- 5
+X &lt;- matrix(1:(N*p),N,p,byrow=TRUE)
+head(X)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXSBbLDRdIFssNV1cblsxLF0gICAgMSAgICAyICAgIDMgICAgNCAgICA1XG5bMixdICAgIDYgICAgNyAgICA4ICAgIDkgICAxMFxuWzMsXSAgIDExICAgMTIgICAxMyAgIDE0ICAgMTVcbls0LF0gICAxNiAgIDE3ICAgMTggICAxOSAgIDIwXG5bNSxdICAgMjEgICAyMiAgIDIzICAgMjQgICAyNVxuWzYsXSAgIDI2ICAgMjcgICAyOCAgIDI5ICAgMzBcbiJ9 -->
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    2    3    4    5
+[2,]    6    7    8    9   10
+[3,]   11   12   13   14   15
+[4,]   16   17   18   19   20
+[5,]   21   22   23   24   25
+[6,]   26   27   28   29   30</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="exercises-1" class="section level2">
+<h2>Exercises</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXCIxLlwiXG5gYGAifQ== -->
+<pre class="r"><code>&quot;1.&quot;</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiMS5cIlxuIn0= -->
+<pre><code>[1] &quot;1.&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSA8LSBjKDEsNSwyLDQpXG5iIDwtIHJub3JtKDEwKVxuWCA9IG1hdHJpeCgxOjEwMDAsIDEwMCwxMClcblhbMjUsNF1cbmBgYCJ9 -->
+<pre class="r"><code>a &lt;- c(1,5,2,4)
+b &lt;- rnorm(10)
+X = matrix(1:1000, 100,10)
+X[25,4]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDMyNVxuIn0= -->
+<pre><code>[1] 325</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXCIyLlwiXG5gYGAifQ== -->
+<pre class="r"><code>&quot;2.&quot;</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiMi5cIlxuIn0= -->
+<pre><code>[1] &quot;2.&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSAxOjEwXG5jYmluZCh4LDIqeCwzKngsNCp4LDUqeClcbmBgYCJ9 -->
+<pre class="r"><code>x &lt;- 1:10
+cbind(x,2*x,3*x,4*x,5*x)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgIHggICAgICAgICAgICBcbiBbMSxdICAxICAyICAzICA0ICA1XG4gWzIsXSAgMiAgNCAgNiAgOCAxMFxuIFszLF0gIDMgIDYgIDkgMTIgMTVcbiBbNCxdICA0ICA4IDEyIDE2IDIwXG4gWzUsXSAgNSAxMCAxNSAyMCAyNVxuIFs2LF0gIDYgMTIgMTggMjQgMzBcbiBbNyxdICA3IDE0IDIxIDI4IDM1XG4gWzgsXSAgOCAxNiAyNCAzMiA0MFxuIFs5LF0gIDkgMTggMjcgMzYgNDVcblsxMCxdIDEwIDIwIDMwIDQwIDUwXG4ifQ== -->
+<pre><code>       x            
+ [1,]  1  2  3  4  5
+ [2,]  2  4  6  8 10
+ [3,]  3  6  9 12 15
+ [4,]  4  8 12 16 20
+ [5,]  5 10 15 20 25
+ [6,]  6 12 18 24 30
+ [7,]  7 14 21 28 35
+ [8,]  8 16 24 32 40
+ [9,]  9 18 27 36 45
+[10,] 10 20 30 40 50</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiTWF0cml4IEFsZ2VicmEiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KIyBNb3RpdmF0aW5nIEV4YW1wbGVzIAoKIyMgRmFsbGluZyBvYmplY3RzCmBgYHtyfQpzZXQuc2VlZCgxKQpnIDwtIDkuOApuIDwtIDI1CnR0IDwtIHNlcSgwLDMuNCxsZW49bikKZCA8LSA1Ni42NyAtIDAuNSpnKnR0KjIgKyBybm9ybShuLHNkPTEpCnBsb3QodHQsZCx5bGFiPSJEaXN0YW5jZSBpbiBtZXRlcnMiLHhsYWI9IlRpbWUgaW4gc2Vjb25kcyIpCmBgYApCeSBsb29raW5nIGF0IHRoZSBwbG90IG9uZSBjYW4gZGVkdWNlIHRoYXQgdGhlIHBvc2l0aW9uIHNob3VsZCBmb2xsb3cgYSBwYXJhYm9sYS4gV2UgY2FuIG1vZGVsIGJ5IC0gCgokJCBZX2kgPSBcYmV0YV8wICsgXGJldGFfMSB4X2kgKyBcYmV0YV8yIHhfe2l9XnsyfSArIFxlcHNpbG9uLCBpID0gMS4uLi4uLm4gJCQKCiMjIEZhdGhlciBhbmQgc29uIGhlaWdodHMgCmBgYHtyfQpsaWJyYXJ5KFVzaW5nUikKeCA9IGZhdGhlci5zb24kZmhlaWdodAp5ID0gZmF0aGVyLnNvbiRzaGVpZ2h0CnBsb3QoeCx5LHhsYWI9IkZhdGhlcidzIGhlaWdodCIsIHlsYWI9IlNvbidzIGhlaWdodCIpCmBgYApUaGUgc29uJ3MgaGVpZ2h0IGRvIHNlZW0gdG8gaW5jcmVhc2UgbGluZWFybHkgd2l0aCBmYXRoZXIncyBoZWlnaHRzLiBJbiB0aGlzIGNhc2Ugd2UgY2hvc2UgYSBsaW5lYXIgbW9kZWwgLSAKCiQkIFlfaSA9IFxiZXRhXzAgKyBcYmV0YV8xIHhfaSArIFxlcHNpbG9uLCBpID0gMSwuLi4uLi4sTiAkJAojIyBSYW5kb20gc2FtcGxlcyBmcm9tIG11bHRpcGxlIHBvcHVsYXRpb25zIApXZSBhcmUgaW50ZXJlc3RlZCB0byBkZXRlcm1pbmUgaWYgdGhlIGRpZXQgaGFzIGFuIGVmZmVjdCBvbiB3ZWlnaHQuIApgYGB7cn0KZGF0IDwtIHJlYWQuY3N2KCJmZW1hbGVNaWNlV2VpZ2h0cy5jc3YiKQpzdHJpcGNoYXJ0KEJvZHl3ZWlnaHR+RGlldCxkYXRhPWRhdCx2ZXJ0aWNhbD1UUlVFLG1ldGhvZD0iaml0dGVyIixwY2g9MSxtYWluPSJNaWNlIHdlaWdodHMiKQpgYGAKCmBgYHtyfQpnIDwtIDkuOCAKbiA8LSAyNSAKdHQgPC0gc2VxKDAsMy40LGxlbj1uKQpmIDwtIDU2LjY3IC0gMC41KmcqdHReMgp5IDwtIGYgKyBybm9ybShuLHNkPTEpCnBsb3QodHQseSx5bGFiID0gIkRpc3RhbmNlIGluIG1ldGVycyIsIHhsYWIgPSAiVGltZSBpbiBzZWNvbmRzIikKbGluZXModHQsZixjb2w9MikKYGBgCgojIyBUaGUgbG0gZnVuY3Rpb24gCmBgYHtyfQp0dDIgPC0gdHReMgpmaXQgPC0gbG0oeX50dCt0dDIpCnN1bW1hcnkoZml0KSRjb2VmCmBgYAojIyBUaGUgbGVhc3Qgc3F1YXJlcyBlc3RpbWF0ZSAoTFNFKQpgYGB7cn0KcnNzIDwtIGZ1bmN0aW9uKEJldGEwLEJldGExLEJldGEyKXsKICByIDwtIHkgLSAoQmV0YTArQmV0YTEqdHQrQmV0YTIqdHReMikKICByZXR1cm4oc3VtKHJeMikpCn0KYGBgCgpGb3IgYW55IHRocmVlIGRpbWVuc2lvbmFsIHZlY3RvciB3ZSBnZXQgYW4gUlNTLiBIZXJlIGlzIGEgcGxvdCBhcyBhIGZ1bmN0aW9uIG9mICQkXGJldGFfMiQkIHdoZW4gb3RoZXIgdHdvIGFyZSBmaXhlZC4gCgpgYGB7cn0KQmV0YTJzIDwtIHNlcSgtMTAsMCxsZW49MTAwKQpwbG90KEJldGEycyxzYXBwbHkoQmV0YTJzLHJzcyxCZXRhMD01NSxCZXRhMT0wKSwKICAgICB5bGFiPSJSU1MiLHhsYWI9IkJldGEyIix0eXBlPSJsIikKIyMgYW5vdGhlciBjdXJ2ZSBmaXhpbmcgYW5vdGhlciBwYWlyCkJldGEycyA8LSBzZXEoLTEwLDAsbGVuPTEwMCkKbGluZXMoQmV0YTJzLHNhcHBseShCZXRhMnMscnNzLEJldGEwPTY1LEJldGExPTApLGNvbD0yKQpgYGAKIyMgRXhlcmNpc2VzIApgYGB7cn0KbGlicmFyeShVc2luZ1IpCmRhdGEoImZhdGhlci5zb24iLHBhY2thZ2U9IlVzaW5nUiIpCmBgYApgYGB7cn0KIyBRdWVzdGlvbiAxIAptZWFuKGZhdGhlci5zb24kc2hlaWdodCkKYGBgCmBgYHtyfQojIFF1ZXN0aW9uIDIgCgpgYGAKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiTWF0cml4IEFsZ2VicmEiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KIyBNb3RpdmF0aW5nIEV4YW1wbGVzIAoKIyMgRmFsbGluZyBvYmplY3RzCmBgYHtyfQpzZXQuc2VlZCgxKQpnIDwtIDkuOApuIDwtIDI1CnR0IDwtIHNlcSgwLDMuNCxsZW49bikKZCA8LSA1Ni42NyAtIDAuNSpnKnR0KjIgKyBybm9ybShuLHNkPTEpCnBsb3QodHQsZCx5bGFiPSJEaXN0YW5jZSBpbiBtZXRlcnMiLHhsYWI9IlRpbWUgaW4gc2Vjb25kcyIpCmBgYApCeSBsb29raW5nIGF0IHRoZSBwbG90IG9uZSBjYW4gZGVkdWNlIHRoYXQgdGhlIHBvc2l0aW9uIHNob3VsZCBmb2xsb3cgYSBwYXJhYm9sYS4gV2UgY2FuIG1vZGVsIGJ5IC0gCgokJCBZX2kgPSBcYmV0YV8wICsgXGJldGFfMSB4X2kgKyBcYmV0YV8yIHhfe2l9XnsyfSArIFxlcHNpbG9uLCBpID0gMS4uLi4uLm4gJCQKCiMjIEZhdGhlciBhbmQgc29uIGhlaWdodHMgCmBgYHtyfQpsaWJyYXJ5KFVzaW5nUikKeCA9IGZhdGhlci5zb24kZmhlaWdodAp5ID0gZmF0aGVyLnNvbiRzaGVpZ2h0CnBsb3QoeCx5LHhsYWI9IkZhdGhlcidzIGhlaWdodCIsIHlsYWI9IlNvbidzIGhlaWdodCIpCmBgYApUaGUgc29uJ3MgaGVpZ2h0IGRvIHNlZW0gdG8gaW5jcmVhc2UgbGluZWFybHkgd2l0aCBmYXRoZXIncyBoZWlnaHRzLiBJbiB0aGlzIGNhc2Ugd2UgY2hvc2UgYSBsaW5lYXIgbW9kZWwgLSAKCiQkIFlfaSA9IFxiZXRhXzAgKyBcYmV0YV8xIHhfaSArIFxlcHNpbG9uLCBpID0gMSwuLi4uLi4sTiAkJAojIyBSYW5kb20gc2FtcGxlcyBmcm9tIG11bHRpcGxlIHBvcHVsYXRpb25zIApXZSBhcmUgaW50ZXJlc3RlZCB0byBkZXRlcm1pbmUgaWYgdGhlIGRpZXQgaGFzIGFuIGVmZmVjdCBvbiB3ZWlnaHQuIApgYGB7cn0KZGF0IDwtIHJlYWQuY3N2KCJmZW1hbGVNaWNlV2VpZ2h0cy5jc3YiKQpzdHJpcGNoYXJ0KEJvZHl3ZWlnaHR+RGlldCxkYXRhPWRhdCx2ZXJ0aWNhbD1UUlVFLG1ldGhvZD0iaml0dGVyIixwY2g9MSxtYWluPSJNaWNlIHdlaWdodHMiKQpgYGAKCmBgYHtyfQpnIDwtIDkuOCAKbiA8LSAyNSAKdHQgPC0gc2VxKDAsMy40LGxlbj1uKQpmIDwtIDU2LjY3IC0gMC41KmcqdHReMgp5IDwtIGYgKyBybm9ybShuLHNkPTEpCnBsb3QodHQseSx5bGFiID0gIkRpc3RhbmNlIGluIG1ldGVycyIsIHhsYWIgPSAiVGltZSBpbiBzZWNvbmRzIikKbGluZXModHQsZixjb2w9MikKYGBgCgojIyBUaGUgbG0gZnVuY3Rpb24gCmBgYHtyfQp0dDIgPC0gdHReMgpmaXQgPC0gbG0oeX50dCt0dDIpCnN1bW1hcnkoZml0KSRjb2VmCmBgYAojIyBUaGUgbGVhc3Qgc3F1YXJlcyBlc3RpbWF0ZSAoTFNFKQpgYGB7cn0KcnNzIDwtIGZ1bmN0aW9uKEJldGEwLEJldGExLEJldGEyKXsKICByIDwtIHkgLSAoQmV0YTArQmV0YTEqdHQrQmV0YTIqdHReMikKICByZXR1cm4oc3VtKHJeMikpCn0KYGBgCgpGb3IgYW55IHRocmVlIGRpbWVuc2lvbmFsIHZlY3RvciB3ZSBnZXQgYW4gUlNTLiBIZXJlIGlzIGEgcGxvdCBhcyBhIGZ1bmN0aW9uIG9mICQkXGJldGFfMiQkIHdoZW4gb3RoZXIgdHdvIGFyZSBmaXhlZC4gCgpgYGB7cn0KQmV0YTJzIDwtIHNlcSgtMTAsMCxsZW49MTAwKQpwbG90KEJldGEycyxzYXBwbHkoQmV0YTJzLHJzcyxCZXRhMD01NSxCZXRhMT0wKSwKICAgICB5bGFiPSJSU1MiLHhsYWI9IkJldGEyIix0eXBlPSJsIikKIyMgYW5vdGhlciBjdXJ2ZSBmaXhpbmcgYW5vdGhlciBwYWlyCkJldGEycyA8LSBzZXEoLTEwLDAsbGVuPTEwMCkKbGluZXMoQmV0YTJzLHNhcHBseShCZXRhMnMscnNzLEJldGEwPTY1LEJldGExPTApLGNvbD0yKQpgYGAKIyMgRXhlcmNpc2VzIApgYGB7cn0KbGlicmFyeShVc2luZ1IpCmRhdGEoImZhdGhlci5zb24iLHBhY2thZ2U9IlVzaW5nUiIpCmBgYApgYGB7cn0KIyBRdWVzdGlvbiAxIAptZWFuKGZhdGhlci5zb24kc2hlaWdodCkKYGBgCmBgYHtyfQojIFF1ZXN0aW9uIDIgCgpgYGAKIyMgVmVjdG9ycywgTWF0cmljZXMgYW5kIFNjYWxhcnMgCmBgYHtyfQpsaWJyYXJ5KFVzaW5nUikKeSA9IGZhdGhlci5zb24kZmhlaWdodApoZWFkKHkpCmBgYApgYGB7cn0KbiA8LSAyNSAKdHQgPC0gc2VxKDAsMy40LGxlbj1uKQpYIDwtIGNiaW5kKFgxPXR0LFgyPXR0XjIpCmhlYWQoWCkKYGBgCmBgYHtyfQpOIDwtMTAwIApwIDwtIDUKWCA8LSBtYXRyaXgoMTooTipwKSxOLHApCmhlYWQoWCkKYGBgCmBgYHtyfQpOIDwtIDEwMDsgcDwtIDUKWCA8LSBtYXRyaXgoMTooTipwKSxOLHAsYnlyb3c9VFJVRSkKaGVhZChYKQpgYGAKIyMgRXhlcmNpc2VzIApgYGB7cn0KIjEuIgphIDwtIGMoMSw1LDIsNCkKYiA8LSBybm9ybSgxMCkKWCA9IG1hdHJpeCgxOjEwMDAsIDEwMCwxMCkKWFsyNSw0XQoKYGBgCmBgYHtyfQoiMi4iCnggPC0gMToxMApjYmluZCh4LDIqeCwzKngsNCp4LDUqeCkKYGBg</div>
 
 
 

@@ -81,4 +81,40 @@ mean(father.son$sheight)
 # Question 2 
 
 ```
+## Vectors, Matrices and Scalars 
+```{r}
+library(UsingR)
+y = father.son$fheight
+head(y)
+```
+```{r}
+n <- 25 
+tt <- seq(0,3.4,len=n)
+X <- cbind(X1=tt,X2=tt^2)
+head(X)
+```
+```{r}
+N <-100 
+p <- 5
+X <- matrix(1:(N*p),N,p)
+head(X)
+```
+```{r}
+N <- 100; p<- 5
+X <- matrix(1:(N*p),N,p,byrow=TRUE)
+head(X)
+```
+## Exercises 
+```{r}
+"1."
+a <- c(1,5,2,4)
+b <- rnorm(10)
+X = matrix(1:1000, 100,10)
+X[25,4]
 
+```
+```{r}
+"2."
+x <- 1:10
+cbind(x,2*x,3*x,4*x,5*x)
+```
